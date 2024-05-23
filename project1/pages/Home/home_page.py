@@ -49,5 +49,41 @@ def search_by_looping(driver,search_text):
     return driver
 
 
+def click_donate(driver, expected_url):
+    wait = WebDriverWait(driver, 10)
+    donate_link = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="touchnav-wrapper"]/header/div/div[1]/a')))
+    donate_link.click()
+    print('Donate link clicked')
+    actual_url = driver.current_url
+    if expected_url == actual_url:
+        print('Test Case Passed')
+    else:
+        print('Test Case Failed. Current URL is different from expected')
+    print(f'Current URL: {actual_url}')
+    return driver
 
-    
+def click_download_python_docs_throuth_learnmore(driver,url):
+    wait = WebDriverWait(driver, 10)
+    driver.get(url)
+    python_docs = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="touchnav-wrapper"]/header/div/div[2]/div/p[3]/a')))
+    python_docs.click()
+    print('successfully click the button')
+    print('current url of the page'+driver.current_url)
+    return driver
+
+def click_download_python_docs_throuth_learnmore_test2(driver,expected_url_learnmore,expected_url_pythondocs):
+    wait = WebDriverWait(driver,5)
+    learn_more = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="touchnav-wrapper"]/header/div/div[3]/p/a')))
+    learn_more.click()
+    if expected_url_learnmore == driver.get.actual_url:
+        print('Test pass: successfully direct to puthon docs page')
+    else:
+        print('Test fail: expected and actual url are different')
+    python_docs = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="touchnav-wrapper"]/header/div/div[2]/div/p[3]/a')))
+    python_docs.click()
+    if expected_url_pythondocs == driver.get.actual_url:
+        print('Test pass: successfully click to puthon docs button')
+    else:
+        print('Test fail: \twrong button click : expected and actual url are different')
+
+    return driver
