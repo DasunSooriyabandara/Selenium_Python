@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
 sys.path.append("E:\github\Selenium_Python\project1")
-from pages.Home.home_page import click_downloads , search , search_by_looping, click_donate , click_download_python_docs_throuth_learnmore ,click_download_python_docs_throuth_learnmore_test2
+from pages.Home.home_page import click_become_member_button, click_donate, click_download_python_docs_throuth_learnmore, click_download_python_docs_throuth_learnmore_test2, click_downloads, click_socialize_button , search , search_by_looping 
 from pages.Downloads.downloads_page import click_download_python
 
 
@@ -32,13 +32,15 @@ def check_latest_python_version():
     driver = click_downloads(driver)
     driver = click_download_python(driver,python_version_text)
     driver.close()
-    
 
 def search_for_python_realses():
     search_text = "Python 2.5 Release"
     driver = open_browser()
     driver = search_by_looping(driver,search_text)
     driver.close()
+
+search_for_python_realses()
+
 ##---------------------------My test cases-------------------------
 def click_donate_button():
     expected_url = "https://psfmember.org/civicrm/contribute/transact/?reset=1&id=2"
@@ -48,9 +50,11 @@ def click_donate_button():
 
 
 def download_pythondocs():
+    print("Downloading Python docs...")
     driver = open_browser()
-    url = driver.get(pythondocs_url)
-    driver = click_download_python_docs_throuth_learnmore(driver,url)
+    driver = click_download_python_docs_throuth_learnmore(driver, pythondocs_url)
+    driver.close()
+    print("Closed browser after downloading Python docs.")
 
 def download_pythondocs_test2():
     expected_url_learnmore ='https://www.python.org/doc/'
@@ -58,3 +62,17 @@ def download_pythondocs_test2():
     driver = open_browser()
     driver = click_download_python_docs_throuth_learnmore_test2(driver,expected_url_learnmore,expected_url_pythondocs)  
     driver.close()
+    
+def Select_linkedine_through_socialize():
+    expected_url = "https://www.linkedin.com/company/thepsf/"
+    driver = open_browser()
+    driver = click_socialize_button(driver,expected_url)
+    driver.close()
+    
+def click_become_member():
+    driver = open_browser()
+    driver = click_become_member_button(driver)
+    
+    
+
+    

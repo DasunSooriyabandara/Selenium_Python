@@ -48,12 +48,12 @@ def search_by_looping(driver,search_text):
             print()
     return driver
 
-
+# ------------------My test case-----------
 def click_donate(driver, expected_url):
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     donate_link = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="touchnav-wrapper"]/header/div/div[1]/a')))
     donate_link.click()
-    print('Donate link clicked')
+    print('~~~~~~~~~~Donate link clicked')
     actual_url = driver.current_url
     if expected_url == actual_url:
         print('Test Case Passed')
@@ -87,3 +87,24 @@ def click_download_python_docs_throuth_learnmore_test2(driver,expected_url_learn
         print('Test fail: \twrong button click : expected and actual url are different')
 
     return driver
+
+def click_socialize_button(driver,expected_url):
+    wait = WebDriverWait(driver, 30)
+    socialize_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='touchnav-wrapper']/header/div/div[1]/div/div[2]/ul/li/a")))
+    socialize_button.click()
+    print("~~~~~~~Click Socialize button and menu opens")
+    linkedin_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='touchnav-wrapper']/header/div/div[1]/div/div[2]/ul/li/ul/li[1]")))
+    linkedin_option.click()
+    actual_url = driver.current_url
+    if expected_url == actual_url:
+        print("Test Passed: successfly Click Likedine button")
+    else:
+        print("Test Failed: wrong socialmedia selected")
+    return driver
+    
+def click_become_member_button(driver):
+    become_member_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div/section/div[5]/p[2]/a[1]')))
+    become_member_button.click()
+    print("~~~~ Found Become a Member button and clicked")
+    return driver
+
