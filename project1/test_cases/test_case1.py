@@ -72,6 +72,7 @@ def Select_linkedine_through_socialize():
 def click_become_member():
     driver = open_browser()
     driver = click_become_member_button(driver)
+   
     
     
 

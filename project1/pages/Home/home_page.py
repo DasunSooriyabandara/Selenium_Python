@@ -104,7 +104,9 @@ def click_socialize_button(driver,expected_url):
     
 def click_become_member_button(driver):
     become_member_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div/section/div[5]/p[2]/a[1]')))
+    print("~~~~ Found Become a Member button text" + become_member_button.text)
     become_member_button.click()
+    print(str(driver.currnt_url))
     print("~~~~ Found Become a Member button and clicked")
     return driver
 
