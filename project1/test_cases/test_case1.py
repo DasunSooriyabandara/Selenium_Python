@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
 sys.path.append("E:\github\Selenium_Python\project1")
-from pages.Home.home_page import click_become_member_button, click_donate, click_download_python_docs_throuth_learnmore, click_download_python_docs_throuth_learnmore_test2, click_downloads, click_socialize_button , search , search_by_looping 
+from pages.Home.home_page import click_become_member_button, click_donate, click_download_python_docs_throuth_learnmore, click_download_python_docs_throuth_learnmore_test2, click_downloads, click_socialize_button , search_by_looping, click_all_releases, click_source_code, click_windows
 from pages.Downloads.downloads_page import click_download_python
 
 
@@ -26,54 +26,75 @@ def open_browser():
     return driver
 
 
-def check_latest_python_version():
+def test_check_latest_python_version():
     python_version_text = "Download Python 3.12.3"
     driver = open_browser()
     driver = click_downloads(driver)
     driver = click_download_python(driver,python_version_text)
     driver.close()
 
-def search_for_python_realses():
+def test_search_for_python_realses():
     search_text = "Python 2.5 Release"
     driver = open_browser()
     driver = search_by_looping(driver,search_text)
     driver.close()
 
-search_for_python_realses()
+# search_for_python_realses()
 
 ##---------------------------My test cases-------------------------
-def click_donate_button():
+def test_click_donate_button():
     expected_url = "https://psfmember.org/civicrm/contribute/transact/?reset=1&id=2"
     driver = open_browser()
     driver = click_donate(driver,expected_url)
     driver.close()
 
 
-def download_pythondocs():
+def test_download_pythondocs():
     print("Downloading Python docs...")
     driver = open_browser()
     driver = click_download_python_docs_throuth_learnmore(driver, pythondocs_url)
     driver.close()
     print("Closed browser after downloading Python docs.")
 
-def download_pythondocs_test2():
+def test_download_pythondocs_test2():
     expected_url_learnmore ='https://www.python.org/doc/'
     expected_url_pythondocs ='https://docs.python.org/3/'
     driver = open_browser()
     driver = click_download_python_docs_throuth_learnmore_test2(driver,expected_url_learnmore,expected_url_pythondocs)  
     driver.close()
     
-def Select_linkedine_through_socialize():
+def test_Select_linkedine_through_socialize():
     expected_url = "https://www.linkedin.com/company/thepsf/"
     driver = open_browser()
     driver = click_socialize_button(driver,expected_url)
     driver.close()
     
-def click_become_member():
+def test_click_become_member():
     driver = open_browser()
     driver = click_become_member_button(driver)
    
     
-    
+# --------------------------------------------------------------------------------------------------------    
+
+
+def test_check_for_all_relases():
+    driver = open_browser()
+    click_all_releases(driver)
+    driver.close()
+
+def test_check_source_code():
+    driver = open_browser()
+    click_source_code(driver)
+    driver.close()
+
+def test_heck_windows():
+    driver = open_browser()
+    click_windows(driver)
+    driver.close()
+       
+# check_for_all_relases()
+# check_source_code()
+# check_windows()
+
 
     
