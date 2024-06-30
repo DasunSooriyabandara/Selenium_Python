@@ -13,9 +13,10 @@ from behave import given , when , then
 def open_browser(context):
     driver_path = r'E:\\github\Selenium_Python\\Project5\driver\\chromedriver.exe'
     service = Service(driver_path)  # Correct instantiation of Service
-    options = Options()
-    options.add_argument('--headless=new')
-    context.driver = webdriver.Chrome(service=service, options=options)
+    # options = Options()
+    # options.add_argument('--headless=new')
+    # context.driver = webdriver.Chrome(service=service, options=options)
+    context.driver = webdriver.Chrome(service=service)
     context.driver.maximize_window()
     context.driver.get('https://www.w3schools.com/')
 
