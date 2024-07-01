@@ -1,0 +1,13 @@
+Feature: Search and retrieve course content from eLearning.lk # elearning.feature:1
+
+  Scenario: User searches for eLearning.lk on Google and navigates to the Python course  # elearning.feature:3
+    Given we go to Google and search for eLearning.lk                                    # steps/elearning.py:12
+    When we click the eLearning.lk link from Google                                      # steps/elearning.py:23
+    Then we should be on the eLearning.lk website                                        # steps/elearning.py:29
+    When the user searches for the Python course in the eLearning.lk search bar          # steps/elearning.py:34
+    And the user clicks on the Python course                                             # steps/elearning.py:43
+    Then the user should be on the Python course page                                    # steps/elearning.py:48
+    When the user checks the course content                                              # steps/elearning.py:52
+    And generates a report containing the course content                                 # steps/elearning.py:63
+    Then the report should be generated successfully                                     # steps/elearning.py:80
+
